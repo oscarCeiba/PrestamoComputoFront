@@ -78,7 +78,7 @@ export class EntregarPrestamoComponent implements OnInit {
       },
         error => {
           let errorRespuesta = JSON.parse(JSON.stringify(error));
-          if (errorRespuesta.error.mensaje != undefined) {
+          if (errorRespuesta.error.mensaje !== undefined) {
             this.notifierService.showNotification(errorRespuesta.error.mensaje, this.ok, this.error);
           } else {
             this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, this.ok, this.error);
@@ -130,7 +130,7 @@ export class EntregarPrestamoComponent implements OnInit {
       },
         error => {
           let errorRespuesta = JSON.parse(JSON.stringify(error));
-          if (errorRespuesta.error.mensaje != undefined) {
+          if (errorRespuesta.error.mensaje !== undefined) {
             this.notifierService.showNotification(errorRespuesta.error.mensaje, this.ok, this.error);
           } else {
             this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, this.ok, this.error);
