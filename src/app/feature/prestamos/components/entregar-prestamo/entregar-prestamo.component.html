@@ -1,0 +1,69 @@
+<mat-card>
+    <mat-card-title>Entrega Computo</mat-card-title>
+    <form [formGroup]="prestamoFormConsulta" (ngSubmit)="consultar()">
+        <div>
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Cedula</mat-label>
+                    <input id="idCedulaConsulta" type="number" matInput maxlength="10" placeholder="ingresar cedula" class="form-control"
+                    formControlName="cedulaConsulta">
+                </mat-form-field>
+            </div>
+            <div class="example-button-row">
+                <button id="consultarSolicitud" mat-raised-button color="primary">Consultar Solicitud</button>
+            </div>
+            <div *ngIf="consulta" class="mdl-cell mdl-cell--12-col">
+                <table mat-table [dataSource]="dataSource" cdkDropList cdkDropListOrientation="horizontal"
+                     style="width: 80%;">
+
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell cdkDrag *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="cedula">
+                        <th mat-header-cell cdkDrag *matHeaderCellDef> Cedula </th>
+                        <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="equipo">
+                        <th mat-header-cell cdkDrag *matHeaderCellDef> equipo computo </th>
+                        <td mat-cell *matCellDef="let element"> {{element.equipoComputo}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="fechaCreacion">
+                        <th mat-header-cell cdkDrag *matHeaderCellDef> fecha creacion </th>
+                        <td mat-cell *matCellDef="let element"> {{element.fechaCreacion}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="fechaEntrega">
+                        <th mat-header-cell cdkDrag *matHeaderCellDef> fecha entrega </th>
+                        <td mat-cell *matCellDef="let element"> {{element.fechaEntrega}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="estado">
+                        <th mat-header-cell cdkDrag *matHeaderCellDef> estado </th>
+                        <td mat-cell *matCellDef="let element"> {{element.estado == 1 ? 'ACTIVO' :'SUSPENDIDO'}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+                </table>
+            </div>
+        </div>
+    </form>
+    <br/>
+    <div *ngIf="consulta">
+        <div>
+             <label>{{mensaje}}</label>
+        </div>
+    </div>
+    <br/>
+    <div *ngIf="botonActualizar">
+        <div class="example-button-row">
+            <button id="actualizarSolicitud" mat-raised-button color="primary" (click)="consumoActualizacion()">Entregar computo</button>
+        </div>
+    </div>
+   
+    
+</mat-card>

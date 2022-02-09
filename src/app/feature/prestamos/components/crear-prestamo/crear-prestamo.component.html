@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-title>Solicitud Prestamo</mat-card-title>
+    <form [formGroup]="prestamoForm" (ngSubmit)="cerrar()">
+        <div>
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Cedula *</mat-label>
+                    <input id="idCedula" type="number" maxlength="10" matInput placeholder="ingresar cedula" class="form-control"
+                    formControlName="cedula">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field autocomplete="off" class="example-full-width" appearance="fill">
+                    <mat-label>Equipo de computo *</mat-label>
+                    <input id="idEquipoComputo" matInput placeholder="ingresar Equipo" class="form-control"
+                    formControlName="equipoComputo">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{fechaActualVista}}</mat-label>
+                    <input matInput [matDatepicker]="dp1" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                    <mat-datepicker #dp1></mat-datepicker>
+                  </mat-form-field>
+            </div>
+            <div class="example-button-row">
+                <button id="crearSolicitud" mat-raised-button color="primary">Guardar Solicitud</button>
+            </div>
+        </div>
+    </form>
+</mat-card>
