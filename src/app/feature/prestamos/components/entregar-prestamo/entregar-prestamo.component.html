@@ -17,32 +17,32 @@
                      style="width: 80%;">
 
                     <ng-container matColumnDef="id">
-                        <th id="numero" mat-header-cell cdkDrag *matHeaderCellDef> No. </th>
+                        <th id="columnaNumero" mat-header-cell cdkDrag *matHeaderCellDef> No. </th>
                         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="cedula">
-                        <th mat-header-cell cdkDrag *matHeaderCellDef> Cedula </th>
+                        <th id="columnaCedula" mat-header-cell cdkDrag *matHeaderCellDef> Cedula </th>
                         <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="equipo">
-                        <th mat-header-cell cdkDrag *matHeaderCellDef> equipo computo </th>
+                        <th id="columnaEquipoComputo" mat-header-cell cdkDrag *matHeaderCellDef> equipo computo </th>
                         <td mat-cell *matCellDef="let element"> {{element.equipoComputo}} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="fechaCreacion">
-                        <th mat-header-cell cdkDrag *matHeaderCellDef> fecha creacion </th>
+                        <th id="columnaFechaCreacion" mat-header-cell cdkDrag *matHeaderCellDef> fecha creacion </th>
                         <td mat-cell *matCellDef="let element"> {{element.fechaCreacion}} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="fechaEntrega">
-                        <th mat-header-cell cdkDrag *matHeaderCellDef> fecha entrega </th>
+                        <th id="columnaFechaEntrega" mat-header-cell cdkDrag *matHeaderCellDef> fecha entrega </th>
                         <td mat-cell *matCellDef="let element"> {{element.fechaEntrega}} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="estado">
-                        <th mat-header-cell cdkDrag *matHeaderCellDef> estado </th>
+                        <th id="columnaEstado" mat-header-cell cdkDrag *matHeaderCellDef> estado </th>
                         <td mat-cell *matCellDef="let element"> {{element.estado == 1 ? 'ACTIVO' :'SUSPENDIDO'}} </td>
                     </ng-container>
 
