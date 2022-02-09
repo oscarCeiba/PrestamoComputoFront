@@ -15,6 +15,9 @@ const MENSAJE_SUSPENSION = "La fecha de entrega de la solicitud esta fuera de la
   "visualizar la fecha de suspension y el monto a pagar.";
 const MENSAJE_SUSPENSION_CREADA = "La solicitud es suspendida, debe esperar hasta un dia despues de la " +
   "fecha que se le indico para poder realizar una nueva solicitud.";
+const OK = "ok";
+const SUCCESS = "success";
+const ERROR = "error";
 
 @Component({
   selector: 'app-entregar-prestamo',
@@ -59,30 +62,26 @@ export class EntregarPrestamoComponent implements OnInit {
       this.dataSource = [];
       this.consumoConsultarSolicitud(this.prestamoFormConsulta.get('cedulaConsulta').value + '');
     } else {
-      this.notifierService.showNotification(VALIDAR_CAMPOS, "ok", "error");
+      this.notifierService.showNotification(VALIDAR_CAMPOS, OK, ERROR);
     }
   }
 
   consumoConsultarSolicitud(cedula) {
-    try {
-      this.prestamoService.consultar(cedula)
-        .subscribe(solicitud => {
-          let respuesta = JSON.parse(JSON.stringify(solicitud));
-          this.generarObjetoTabla(respuesta)
-          this.validarEstadoSolicitud(respuesta.estado);
-          this.validarFechaMensajeSuspension(respuesta.fechaEntrega);
-        },
-          error => {
-            let errorRespuesta = JSON.parse(JSON.stringify(error));
-            if (errorRespuesta.error.mensaje != undefined) {
-              this.notifierService.showNotification(errorRespuesta.error.mensaje, "ok", "error");
-            } else {
-              this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, "ok", "error");
-            }
-          })
-    } catch (e) {
-      console.log(e);
-    }
+    this.prestamoService.consultar(cedula)
+      .subscribe(solicitud => {
+        let respuesta = JSON.parse(JSON.stringify(solicitud));
+        this.generarObjetoTabla(respuesta)
+        this.validarEstadoSolicitud(respuesta.estado);
+        this.validarFechaMensajeSuspension(respuesta.fechaEntrega);
+      },
+        error => {
+          let errorRespuesta = JSON.parse(JSON.stringify(error));
+          if (errorRespuesta.error.mensaje != undefined) {
+            this.notifierService.showNotification(errorRespuesta.error.mensaje, OK, ERROR);
+          } else {
+            this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, OK, ERROR);
+          }
+        })
   }
 
   generarObjetoTabla(respuesta) {
@@ -117,28 +116,24 @@ export class EntregarPrestamoComponent implements OnInit {
   }
 
   consumoActualizacion() {
-    try {
-      let prestamoActualizar: Prestamo = new Prestamo(this.prestamo.id,
-        this.prestamo.cedula, this.prestamo.equipoComputo, this.prestamo.fechaCreacion,
-        this.prestamo.fechaEntrega, this.estadoActualizacion);
+    let prestamoActualizar: Prestamo = new Prestamo(this.prestamo.id,
+      this.prestamo.cedula, this.prestamo.equipoComputo, this.prestamo.fechaCreacion,
+      this.prestamo.fechaEntrega, this.estadoActualizacion);
 
-      this.prestamoService.actualizar(prestamoActualizar)
-        .subscribe(solicitud => {
-          let respuesta = JSON.parse(JSON.stringify(solicitud));
-          this.notifierService.showNotification(respuesta.valor, 'ok', 'success');
-          this.botonActualizar = false;
-        },
-          error => {
-            let errorRespuesta = JSON.parse(JSON.stringify(error));
-            if (errorRespuesta.error.mensaje != undefined) {
-              this.notifierService.showNotification(errorRespuesta.error.mensaje, "ok", "error");
-            } else {
-              this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, "ok", "error");
-            }
-          })
-    } catch (e) {
-      console.log(e);
-    }
+    this.prestamoService.actualizar(prestamoActualizar)
+      .subscribe(solicitud => {
+        let respuesta = JSON.parse(JSON.stringify(solicitud));
+        this.notifierService.showNotification(respuesta.valor, OK, SUCCESS);
+        this.botonActualizar = false;
+      },
+        error => {
+          let errorRespuesta = JSON.parse(JSON.stringify(error));
+          if (errorRespuesta.error.mensaje != undefined) {
+            this.notifierService.showNotification(errorRespuesta.error.mensaje, OK, ERROR);
+          } else {
+            this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, OK, ERROR);
+          }
+        })
   }
 
 
