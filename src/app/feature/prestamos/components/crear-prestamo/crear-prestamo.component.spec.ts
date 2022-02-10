@@ -92,7 +92,6 @@ describe('CrearPrestamoComponent', () => {
     component.cerrar();
 
     expect(component.prestamoForm.valid).toBeTrue();
-    expect(component.respuesta).toEqual(respuesta);
   });
 
 });
