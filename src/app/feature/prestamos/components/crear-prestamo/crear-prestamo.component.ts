@@ -22,9 +22,9 @@ export class CrearPrestamoComponent implements OnInit {
   fechaActualVista: string;
   prestamo: Prestamo;
   respuesta: any;
-  ok: string = "ok";
-  success: any = "success";
-  error: any = "error";
+  ok: string = 'ok';
+  success: any = 'success';
+  error: any = 'error';
 
 
   constructor(protected prestamoService: PrestamoService,

@@ -9,11 +9,11 @@ export class NotifierService {
 
   constructor(private snackBar:MatSnackBar) { }
 
-  showNotification(displayMessage:string, buttonText:string, messageType : 'error'|'success'){
+  showNotification(displayMessage:string, buttonMessage:string, messageType : 'error'|'success'){
     this.snackBar.openFromComponent(NotifierComponent,{
       data: {
         message: displayMessage,
-        buttonText: buttonText,
+        buttonText: buttonMessage,
         type:messageType
       },
       horizontalPosition: 'center',

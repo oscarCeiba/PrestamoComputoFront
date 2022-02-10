@@ -13,8 +13,13 @@
                 <button id="consultarSolicitud" mat-raised-button color="primary">Consultar Solicitud</button>
             </div>
             <div *ngIf="consulta" class="mdl-cell mdl-cell--12-col">
+                <br/>
+                <div>
+                    <p id="descripcionTabla">Consulta Realizada</p>
+                </div>
+                <br/>
                 <table mat-table [dataSource]="dataSource" cdkDropList cdkDropListOrientation="horizontal"
-                     style="width: 80%;">
+                     style="width: 80%;" aria-describedby="descripcionTabla">
 
                     <ng-container matColumnDef="id">
                         <th id="columnaNumero" mat-header-cell cdkDrag *matHeaderCellDef> No. </th>

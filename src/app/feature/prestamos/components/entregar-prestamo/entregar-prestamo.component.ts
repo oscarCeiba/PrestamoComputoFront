@@ -32,9 +32,9 @@ export class EntregarPrestamoComponent implements OnInit {
   mensaje: string;
   estadoActualizacion: number;
   dataSource = [];
-  ok: string = "ok";
-  success: any = "success";
-  error: any = "error";
+  ok: string = 'ok';
+  success: any = 'success';
+  error: any = 'error';
 
 
   constructor(protected prestamoService: PrestamoService,
