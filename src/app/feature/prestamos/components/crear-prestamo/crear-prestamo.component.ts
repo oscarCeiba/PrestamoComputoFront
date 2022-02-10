@@ -22,7 +22,6 @@ export class CrearPrestamoComponent implements OnInit {
   prestamoForm: FormGroup;
   fechaActualVista: string;
   prestamo: Prestamo;
-  respuesta: any;
   ok: string;
   success: string;
   error: string;
@@ -55,10 +54,10 @@ export class CrearPrestamoComponent implements OnInit {
 
   private cargarFecha() {
     let fechaActual = new Date;
-    let año = fechaActual.getFullYear();
+    let _año = fechaActual.getFullYear();
     let mes = ((fechaActual.getMonth() + UNO) > NUEVE ? (fechaActual.getMonth() + UNO) : `0${(fechaActual.getMonth() + UNO)}`);
     let dia = (fechaActual.getDate() > NUEVE ? fechaActual.getDate() : `0${fechaActual.getDate()}`);
-    this.fechaActualVista = `${año}-${mes}-${dia}`;
+    this.fechaActualVista = `${_año}-${mes}-${dia}`;
   }
 
   cerrar() {
@@ -74,8 +73,8 @@ export class CrearPrestamoComponent implements OnInit {
   consumoGuardarSolicitud() {
     this.prestamoService.guardar(this.prestamo)
       .subscribe(solicitud => {
-        this.respuesta = JSON.parse(JSON.stringify(solicitud));
-        this.notifierService.showNotification(this.respuesta.valor, this.ok, this.success);
+        let respuesta = JSON.parse(JSON.stringify(solicitud));
+        this.notifierService.showNotification(respuesta.valor, this.ok, this.success);
       },
         error => {
           let errorRespuesta = JSON.parse(JSON.stringify(error));
