@@ -88,7 +88,6 @@ describe('CrearPrestamoComponent', () => {
     spyOn(prestamoService, 'guardar').and.returnValue(
       of(respuesta)
     );
-    
 
     component.cerrar();
 
