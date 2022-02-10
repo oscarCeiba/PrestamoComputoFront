@@ -7,6 +7,8 @@ import { PrestamoService } from '../../shared/service/prestamo.service';
 const LONGITUD_MINIMA_PERMITIDA_CEDULA = 10;
 const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
 const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
+const UNO = 1;
+const NUEVE = 9;
 const ERROR_SERVIDOR = 'Se presento un error en el servidor: Codigo ';
 const VALIDAR_CAMPOS = 'Debe validar los campos obligatorios.';
 
@@ -54,9 +56,9 @@ export class CrearPrestamoComponent implements OnInit {
   private cargarFecha() {
     let fechaActual = new Date;
     let año = fechaActual.getFullYear();
-    let mes = ((fechaActual.getMonth() + 1) > 9 ? (fechaActual.getMonth() + 1) : '0' + (fechaActual.getMonth() + 1));
-    let dia = (fechaActual.getDate() > 9 ? fechaActual.getDate() : '0'+ fechaActual.getDate());
-    this.fechaActualVista = año + '-' + mes + '-'+ dia;
+    let mes = ((fechaActual.getMonth() + UNO) > NUEVE ? (fechaActual.getMonth() + UNO) : `0${(fechaActual.getMonth() + UNO)}`);
+    let dia = (fechaActual.getDate() > NUEVE ? fechaActual.getDate() : `0${fechaActual.getDate()}`);
+    this.fechaActualVista = `${año}-${mes}-${dia}`;
   }
 
   cerrar() {

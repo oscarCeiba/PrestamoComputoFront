@@ -19,6 +19,6 @@ export class NotifierService {
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
       panelClass: messageType
-    })
+    });
   } 
 }
