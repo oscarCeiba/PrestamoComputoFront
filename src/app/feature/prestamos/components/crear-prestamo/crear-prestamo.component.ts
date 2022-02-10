@@ -12,8 +12,7 @@ const VALIDAR_CAMPOS = "Debe validar los campos obligatorios.";
 
 @Component({
   selector: 'app-crear-prestamo',
-  templateUrl: './crear-prestamo.component.html',
-  styleUrls: ['./crear-prestamo.component.css']
+  templateUrl: './crear-prestamo.component.html'
 })
 
 export class CrearPrestamoComponent implements OnInit {

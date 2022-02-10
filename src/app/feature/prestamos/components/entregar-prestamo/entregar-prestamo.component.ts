@@ -19,8 +19,7 @@ const MENSAJE_SUSPENSION_CREADA = "La solicitud es suspendida, debe esperar hast
 
 @Component({
   selector: 'app-entregar-prestamo',
-  templateUrl: './entregar-prestamo.component.html',
-  styleUrls: ['./entregar-prestamo.component.css']
+  templateUrl: './entregar-prestamo.component.html'
 })
 export class EntregarPrestamoComponent implements OnInit {
 

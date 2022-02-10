@@ -3,8 +3,7 @@ import {MatSnackBarRef, MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-notifier',
-  templateUrl: './notifier.component.html',
-  styleUrls: ['./notifier.component.css']
+  templateUrl: './notifier.component.html'
 })
 export class NotifierComponent implements OnInit {
 

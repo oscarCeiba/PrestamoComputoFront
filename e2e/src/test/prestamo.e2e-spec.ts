@@ -50,6 +50,7 @@ describe('workspace-project Prestamo', () => {
         prestamo.clickBotonActualizarPrestamo();
         prestamo.ingresarCedulaConsulta(CEDULA);
         prestamo.clickBotonConsultar();
+        browser.sleep(500);
 
         expect(page.getText('app-root td')).toEqual('5');
     });
