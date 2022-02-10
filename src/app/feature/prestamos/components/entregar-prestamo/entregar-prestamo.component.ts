@@ -31,9 +31,9 @@ export class EntregarPrestamoComponent implements OnInit {
   mensaje: string;
   estadoActualizacion: number;
   dataSource = [];
-  ok: string = 'ok';
-  success: string = 'success';
-  error: string = 'error';
+  ok: string;
+  success: string;
+  error: string;
 
 
   constructor(protected prestamoService: PrestamoService,
@@ -55,6 +55,9 @@ export class EntregarPrestamoComponent implements OnInit {
     this.consulta = false;
     this.botonActualizar = false;
     this.estadoActualizacion = 0;
+    this.ok = 'ok';
+    this.success = 'success';
+    this.error = 'error';
   }
 
   consultar() {

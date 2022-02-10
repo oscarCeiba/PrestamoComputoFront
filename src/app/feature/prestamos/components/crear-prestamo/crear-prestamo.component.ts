@@ -21,9 +21,9 @@ export class CrearPrestamoComponent implements OnInit {
   fechaActualVista: string;
   prestamo: Prestamo;
   respuesta: any;
-  ok: string = 'ok';
-  success: string = 'success';
-  error: string = 'error';
+  ok: string;
+  success: string;
+  error: string;
 
 
   constructor(protected prestamoService: PrestamoService,
@@ -31,7 +31,15 @@ export class CrearPrestamoComponent implements OnInit {
 
   ngOnInit() {
     this.construirFormularioPrestamos();
+    this.iniciarVaribales();
+    
+  }
+
+  iniciarVaribales(){
     this.cargarFecha();
+    this.ok = 'ok';
+    this.success = 'success';
+    this.error = 'error';
   }
 
   private construirFormularioPrestamos() {
@@ -45,7 +53,10 @@ export class CrearPrestamoComponent implements OnInit {
 
   private cargarFecha() {
     let fechaActual = new Date;
-    this.fechaActualVista = fechaActual.getFullYear() + '-' + ((fechaActual.getMonth() + 1) > 9 ? (fechaActual.getMonth() + 1) : '0' + (fechaActual.getMonth() + 1)) + '-'+ (fechaActual.getDate() > 9 ? fechaActual.getDate() : '0'+ fechaActual.getDate());
+    let año = fechaActual.getFullYear();
+    let mes = ((fechaActual.getMonth() + 1) > 9 ? (fechaActual.getMonth() + 1) : '0' + (fechaActual.getMonth() + 1));
+    let dia = (fechaActual.getDate() > 9 ? fechaActual.getDate() : '0'+ fechaActual.getDate());
+    this.fechaActualVista = año + '-' + mes + '-'+ dia;
   }
 
   cerrar() {
