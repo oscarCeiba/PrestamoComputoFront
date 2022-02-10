@@ -96,7 +96,7 @@ export class EntregarPrestamoComponent implements OnInit {
   }
 
   validarEstadoSolicitud(estado) {
-    if (estado == 1) {
+    if (estado === 1) {
       this.botonActualizar = true;
     } else {
       this.botonActualizar = false;

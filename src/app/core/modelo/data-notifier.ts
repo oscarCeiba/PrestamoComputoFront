@@ -1,4 +1,4 @@
-export class dataNotifier {
+export class DataNotifier {
     message: string;
     buttonText: string;
     type: string;

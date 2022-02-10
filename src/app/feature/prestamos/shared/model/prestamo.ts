@@ -15,5 +15,4 @@ export class Prestamo {
         this.fechaEntrega = fechaEntrega;
         this.estado = estado;
     }
-
 }
