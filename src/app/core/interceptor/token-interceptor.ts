@@ -9,8 +9,8 @@ export class TokenInterceptor implements HttpInterceptor {
 
   constructor(private cookieService: CookieService) { }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler):
-    Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<object>, next: HttpHandler):
+    Observable<HttpEvent<object>> {
     const token = this.cookieService.get('token');
 
     if (token) {
