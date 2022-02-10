@@ -22,8 +22,8 @@ export class CrearPrestamoComponent implements OnInit {
   prestamo: Prestamo;
   respuesta: any;
   ok: string = 'ok';
-  success: any = 'success';
-  error: any = 'error';
+  success: string = 'success';
+  error: string = 'error';
 
 
   constructor(protected prestamoService: PrestamoService,
@@ -45,11 +45,7 @@ export class CrearPrestamoComponent implements OnInit {
 
   private cargarFecha() {
     let fechaActual = new Date;
-    this.fechaActualVista = fechaActual.getFullYear() + '-'
-      + ((fechaActual.getMonth() + 1) > 9 ? (fechaActual.getMonth() + 1) : '0'
-        + (fechaActual.getMonth() + 1)) + '-'
-      + (fechaActual.getDate() > 9 ? fechaActual.getDate() : '0'
-        + fechaActual.getDate());
+    this.fechaActualVista = fechaActual.getFullYear() + '-' + ((fechaActual.getMonth() + 1) > 9 ? (fechaActual.getMonth() + 1) : '0' + (fechaActual.getMonth() + 1)) + '-'+ (fechaActual.getDate() > 9 ? fechaActual.getDate() : '0'+ fechaActual.getDate());
   }
 
   cerrar() {

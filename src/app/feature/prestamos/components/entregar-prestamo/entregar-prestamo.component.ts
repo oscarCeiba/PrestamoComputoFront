@@ -32,8 +32,8 @@ export class EntregarPrestamoComponent implements OnInit {
   estadoActualizacion: number;
   dataSource = [];
   ok: string = 'ok';
-  success: any = 'success';
-  error: any = 'error';
+  success: string = 'success';
+  error: string = 'error';
 
 
   constructor(protected prestamoService: PrestamoService,
@@ -101,8 +101,8 @@ export class EntregarPrestamoComponent implements OnInit {
   }
 
   validarFechaMensajeSuspension(fecha) {
-    var fechaEntrega = new Date(fecha);
-    var fechaActual = new Date;
+    let fechaEntrega = new Date(fecha);
+    let fechaActual = new Date;
     if (this.botonActualizar) {
       if (fechaEntrega < fechaActual) {
         this.mensaje = MENSAJE_SUSPENSION;
