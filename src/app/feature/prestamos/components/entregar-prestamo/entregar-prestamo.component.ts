@@ -5,16 +5,16 @@ import { NotifierService } from '@core/components/notifier/notifier.service';
 import { PrestamoService } from '../../shared/service/prestamo.service';
 
 const LONGITUD_MINIMA_PERMITIDA_CEDULA = 10;
-const ERROR_SERVIDOR = "Se presento un error en el servidor: Codigo ";
-const VALIDAR_CAMPOS = "Debe validar los campos obligatorios.";
-const MENSAJE_NO_SUSPENSION = "La solicitud es vigente, esta a punto de realizar la entrega.";
-const MENSAJE_SUSPENSION = "La fecha de entrega de la solicitud esta fuera de la fecha estipulada, " +
-  "Esto generara una fecha de suspension y un valor el cual debe cancelar " +
-  "la persona que realizo la anterior solicitud consultada, " +
-  "en el momento que se realice la entrega y actualice la solicitud podra " +
-  "visualizar la fecha de suspension y el monto a pagar.";
-const MENSAJE_SUSPENSION_CREADA = "La solicitud es suspendida, debe esperar hasta un dia despues de la " +
-  "fecha que se le indico para poder realizar una nueva solicitud.";
+const ERROR_SERVIDOR = 'Se presento un error en el servidor: Codigo ';
+const VALIDAR_CAMPOS = 'Debe validar los campos obligatorios.';
+const MENSAJE_NO_SUSPENSION = 'La solicitud es vigente, esta a punto de realizar la entrega.';
+const MENSAJE_SUSPENSION = 'La fecha de entrega de la solicitud esta fuera de la fecha estipulada, ' +
+  'Esto generara una fecha de suspension y un valor el cual debe cancelar ' +
+  'la persona que realizo la anterior solicitud consultada, ' +
+  'en el momento que se realice la entrega y actualice la solicitud podra ' +
+  'visualizar la fecha de suspension y el monto a pagar.';
+const MENSAJE_SUSPENSION_CREADA = 'La solicitud es suspendida, debe esperar hasta un dia despues de la ' +
+  'fecha que se le indico para poder realizar una nueva solicitud.';
 
 
 @Component({
