@@ -54,7 +54,7 @@ export class CrearPrestamoComponent implements OnInit {
 
   private cargarFecha() {
     let fechaActual = new Date;
-    let _año = fechaActual.getFullYear();
+    const _año = fechaActual.getFullYear();
     let mes = ((fechaActual.getMonth() + UNO) > NUEVE ? (fechaActual.getMonth() + UNO) : `0${(fechaActual.getMonth() + UNO)}`);
     let dia = (fechaActual.getDate() > NUEVE ? fechaActual.getDate() : `0${fechaActual.getDate()}`);
     this.fechaActualVista = `${_año}-${mes}-${dia}`;
@@ -83,7 +83,7 @@ export class CrearPrestamoComponent implements OnInit {
           } else {
             this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, this.ok, this.error);
           }
-        })
+        });
   }
 
 }

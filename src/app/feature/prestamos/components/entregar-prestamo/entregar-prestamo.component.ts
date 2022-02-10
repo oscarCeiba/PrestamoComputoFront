@@ -74,7 +74,7 @@ export class EntregarPrestamoComponent implements OnInit {
     this.prestamoService.consultar(cedula)
       .subscribe(solicitud => {
         let respuesta = JSON.parse(JSON.stringify(solicitud));
-        this.generarObjetoTabla(respuesta)
+        this.generarObjetoTabla(respuesta);
         this.validarEstadoSolicitud(respuesta.estado);
         this.validarFechaMensajeSuspension(respuesta.fechaEntrega);
       },
@@ -85,7 +85,7 @@ export class EntregarPrestamoComponent implements OnInit {
           } else {
             this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, this.ok, this.error);
           }
-        })
+        });
   }
 
   generarObjetoTabla(respuesta) {
@@ -137,7 +137,7 @@ export class EntregarPrestamoComponent implements OnInit {
           } else {
             this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, this.ok, this.error);
           }
-        })
+        });
   }
 
 
