@@ -85,12 +85,12 @@ describe('CrearPrestamoComponent', () => {
   it('Registrando prestamo con valores completos', () => {
     component.prestamoForm.controls.cedula.setValue('1023009035');
     component.prestamoForm.controls.equipoComputo.setValue('Asus1');
-    
-    component.cerrar();
     spyOn(prestamoService, 'guardar').and.returnValue(
       of(respuesta)
     );
-
+    
+    component.cerrar();
+    
     expect(component.prestamoForm.valid).toBeTrue();
   });
 

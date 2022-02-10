@@ -11,6 +11,7 @@ import { PrestamoService } from '../../shared/service/prestamo.service';
 
 
 import { EntregarPrestamoComponent } from './entregar-prestamo.component';
+import { NotifierService } from '@core/components/notifier/notifier.service';
 
 describe('EntregarPrestamoComponent', () => {
   let component: EntregarPrestamoComponent;
@@ -24,6 +25,7 @@ describe('EntregarPrestamoComponent', () => {
   const MENSAJE_SUSPENSION_CREADA = "La solicitud es suspendida, debe esperar hasta un dia despues de la " +
     "fecha que se le indico para poder realizar una nueva solicitud.";
   let prestamoService: PrestamoService;
+  let notificacionService: NotifierService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -45,6 +47,7 @@ describe('EntregarPrestamoComponent', () => {
     fixture = TestBed.createComponent(EntregarPrestamoComponent);
     component = fixture.componentInstance;
     prestamoService = TestBed.inject(PrestamoService);
+    notificacionService = TestBed.inject(NotifierService);
     fixture.detectChanges();
   });
 
@@ -72,6 +75,20 @@ describe('EntregarPrestamoComponent', () => {
     );
 
     component.consultar();
+
+    expect(component.prestamoFormConsulta.valid).toBeTrue();
+  });
+
+  it('formulario valido cuando esta vacio haciendo click al boton consultar error servicio', () => {
+    const respuesta : [Prestamo] = [new Prestamo(1,1023009035,"Dell","2021-11-01","2021-11-15",1)];
+    component.prestamoFormConsulta.controls.cedulaConsulta.setValue('1023009044');
+    
+
+    component.consultar();
+
+    spyOn(prestamoService, 'consultar').and.returnValue(
+      of(respuesta)
+    );
 
     expect(component.prestamoFormConsulta.valid).toBeTrue();
   });
@@ -132,6 +149,16 @@ describe('EntregarPrestamoComponent', () => {
       of(respuesta)
     );
       
+    component.consumoActualizacion();
+
+    expect(component.botonActualizar).toBeFalse();
+  });
+
+  it('prueba validar metodo actualizar error servicio', () => {
+    component.prestamo = new Prestamo(1,1023009035,"Dell","2022-02-01","2022-02-30",1);
+    component.estadoActualizacion = 0;
+    spyOn(notificacionService, 'showNotification');
+    notificacionService.showNotification('ERROR_SERVIDOR', 'ok', 'error');
     component.consumoActualizacion();
 
     expect(component.botonActualizar).toBeFalse();
