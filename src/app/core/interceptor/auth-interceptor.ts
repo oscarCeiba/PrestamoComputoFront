@@ -25,8 +25,8 @@ export class AuthInterceptor implements HttpInterceptor {
             this.router.navigate(['/home']);
             break;
           default:
-            return throwError(error);
         }
+        return throwError(error);
       })
     );
   }

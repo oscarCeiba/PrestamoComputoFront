@@ -7,8 +7,8 @@ import { PrestamoService } from '../../shared/service/prestamo.service';
 const LONGITUD_MINIMA_PERMITIDA_CEDULA = 10;
 const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
 const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
-const ERROR_SERVIDOR = "Se presento un error en el servidor: Codigo ";
-const VALIDAR_CAMPOS = "Debe validar los campos obligatorios.";
+const ERROR_SERVIDOR = 'Se presento un error en el servidor: Codigo ';
+const VALIDAR_CAMPOS = 'Debe validar los campos obligatorios.';
 
 @Component({
   selector: 'app-crear-prestamo',
