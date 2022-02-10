@@ -79,12 +79,7 @@ export class EntregarPrestamoComponent implements OnInit {
         this.validarFechaMensajeSuspension(respuesta.fechaEntrega);
       },
         error => {
-          let errorRespuesta = JSON.parse(JSON.stringify(error));
-          if (errorRespuesta.error.mensaje !== undefined) {
-            this.notifierService.showNotification(errorRespuesta.error.mensaje, this.ok, this.error);
-          } else {
-            this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, this.ok, this.error);
-          }
+          this.errorServicio(error);
         });
   }
 
@@ -131,13 +126,17 @@ export class EntregarPrestamoComponent implements OnInit {
         this.botonActualizar = false;
       },
         error => {
-          let errorRespuesta = JSON.parse(JSON.stringify(error));
-          if (errorRespuesta.error.mensaje !== undefined) {
-            this.notifierService.showNotification(errorRespuesta.error.mensaje, this.ok, this.error);
-          } else {
-            this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, this.ok, this.error);
-          }
+          this.errorServicio(error);
         });
+  }
+
+  errorServicio(error){
+    let errorRespuesta = JSON.parse(JSON.stringify(error));
+    if (errorRespuesta.error.mensaje !== undefined) {
+      this.notifierService.showNotification(errorRespuesta.error.mensaje, this.ok, this.error);
+    } else {
+      this.notifierService.showNotification(ERROR_SERVIDOR + errorRespuesta.status, this.ok, this.error);
+    }
   }
 
 
