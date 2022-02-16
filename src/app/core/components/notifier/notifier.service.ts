@@ -7,18 +7,18 @@ import { NotifierComponent } from './notifier.component';
 })
 export class NotifierService {
 
-  constructor(private snackBar:MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar) { }
 
-  showNotification(displayMessage:string, buttonMessage:string, messageType : string){
-    this.snackBar.openFromComponent(NotifierComponent,{
+  showNotification(displayMessage: string, buttonMessage: string, messageType: string){
+    this.snackBar.openFromComponent(NotifierComponent, {
       data: {
         message: displayMessage,
         buttonText: buttonMessage,
-        type:messageType
+        type: messageType
       },
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
       panelClass: messageType
     });
-  } 
+  }
 }

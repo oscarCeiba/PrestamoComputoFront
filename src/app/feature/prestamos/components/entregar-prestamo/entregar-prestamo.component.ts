@@ -37,7 +37,7 @@ export class EntregarPrestamoComponent implements OnInit {
 
 
   constructor(protected prestamoService: PrestamoService,
-    private notifierService: NotifierService) { }
+              private notifierService: NotifierService) { }
 
   ngOnInit() {
     this.construirFormularioConsulta();
@@ -73,7 +73,7 @@ export class EntregarPrestamoComponent implements OnInit {
   consumoConsultarSolicitud(cedula) {
     this.prestamoService.consultar(cedula)
       .subscribe(solicitud => {
-        let respuesta = JSON.parse(JSON.stringify(solicitud));
+        const respuesta = JSON.parse(JSON.stringify(solicitud));
         this.generarObjetoTabla(respuesta);
         this.validarEstadoSolicitud(respuesta.estado);
         this.validarFechaMensajeSuspension(respuesta.fechaEntrega);
@@ -99,8 +99,8 @@ export class EntregarPrestamoComponent implements OnInit {
   }
 
   validarFechaMensajeSuspension(fecha) {
-    let fechaEntrega = new Date(fecha);
-    let fechaActual = new Date;
+    const fechaEntrega = new Date(fecha);
+    const fechaActual = new Date;
     if (this.botonActualizar) {
       if (fechaEntrega < fechaActual) {
         this.mensaje = MENSAJE_SUSPENSION;
@@ -115,13 +115,13 @@ export class EntregarPrestamoComponent implements OnInit {
   }
 
   consumoActualizacion() {
-    let prestamoActualizar: Prestamo = new Prestamo(this.prestamo.id,
+    const prestamoActualizar: Prestamo = new Prestamo(this.prestamo.id,
       this.prestamo.cedula, this.prestamo.equipoComputo, this.prestamo.fechaCreacion,
       this.prestamo.fechaEntrega, this.estadoActualizacion);
 
     this.prestamoService.actualizar(prestamoActualizar)
       .subscribe(solicitud => {
-        let respuesta = JSON.parse(JSON.stringify(solicitud));
+        const respuesta = JSON.parse(JSON.stringify(solicitud));
         this.notifierService.showNotification(respuesta.valor, this.ok, this.success);
         this.botonActualizar = false;
       },
@@ -131,7 +131,7 @@ export class EntregarPrestamoComponent implements OnInit {
   }
 
   errorServicio(error){
-    let errorRespuesta = JSON.parse(JSON.stringify(error));
+    const errorRespuesta = JSON.parse(JSON.stringify(error));
     if (errorRespuesta.error.mensaje !== undefined) {
       this.notifierService.showNotification(errorRespuesta.error.mensaje, this.ok, this.error);
     } else {

@@ -76,10 +76,10 @@ describe('CrearPrestamoComponent', () => {
     spyOn(prestamoService, 'guardar').and.returnValue(
       of(respuesta)
     );
-    spyOn(notifierService,'showNotification');
+    spyOn(notifierService, 'showNotification');
 
     expect(component.prestamoForm.valid).toBeTrue();
-   
+
   });
 
   it('Registrando prestamo con valores completos', () => {
@@ -88,9 +88,9 @@ describe('CrearPrestamoComponent', () => {
     spyOn(prestamoService, 'guardar').and.returnValue(
       of(respuesta)
     );
-    
+
     component.cerrar();
-    
+
     expect(component.prestamoForm.valid).toBeTrue();
   });
 

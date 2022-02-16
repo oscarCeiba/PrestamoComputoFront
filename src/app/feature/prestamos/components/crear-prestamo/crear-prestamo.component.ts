@@ -28,12 +28,12 @@ export class CrearPrestamoComponent implements OnInit {
 
 
   constructor(protected prestamoService: PrestamoService,
-    private notifierService: NotifierService) { }
+              private notifierService: NotifierService) { }
 
   ngOnInit() {
     this.construirFormularioPrestamos();
     this.iniciarVaribales();
-    
+
   }
 
   iniciarVaribales(){
@@ -53,10 +53,10 @@ export class CrearPrestamoComponent implements OnInit {
   }
 
   private cargarFecha() {
-    let fechaActual = new Date;
-    let anualidad = fechaActual.getFullYear();
-    let mes = ((fechaActual.getMonth() + UNO) > NUEVE ? (fechaActual.getMonth() + UNO) : `0${(fechaActual.getMonth() + UNO)}`);
-    let dia = (fechaActual.getDate() > NUEVE ? fechaActual.getDate() : `0${fechaActual.getDate()}`);
+    const fechaActual = new Date;
+    const anualidad = fechaActual.getFullYear();
+    const mes = ((fechaActual.getMonth() + UNO) > NUEVE ? (fechaActual.getMonth() + UNO) : `0${(fechaActual.getMonth() + UNO)}`);
+    const dia = (fechaActual.getDate() > NUEVE ? fechaActual.getDate() : `0${fechaActual.getDate()}`);
     this.fechaActualVista = `${anualidad}-${mes}-${dia}`;
   }
 
@@ -73,11 +73,11 @@ export class CrearPrestamoComponent implements OnInit {
   consumoGuardarSolicitud() {
     this.prestamoService.guardar(this.prestamo)
       .subscribe(solicitud => {
-        let respuesta = JSON.parse(JSON.stringify(solicitud));
+        const respuesta = JSON.parse(JSON.stringify(solicitud));
         this.notifierService.showNotification(respuesta.valor, this.ok, this.success);
       },
         error => {
-          let errorRespuesta = JSON.parse(JSON.stringify(error));
+          const errorRespuesta = JSON.parse(JSON.stringify(error));
           if (errorRespuesta.error.mensaje !== undefined) {
             this.notifierService.showNotification(errorRespuesta.error.mensaje, this.ok, this.error);
           } else {

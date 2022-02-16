@@ -52,13 +52,13 @@ export class HttpService {
 
   public doPost<a>(serviceUrl: string, body: a, opts?: Options): Observable<object> {
     const ropts = this.createOptions(opts);
-    
+
     return this.http.post(serviceUrl, body, ropts);
   }
 
   public doPut<a>(serviceUrl: string, body: a, opts?: Options): Observable<object> {
     const ropts = this.createOptions(opts);
-    
+
     return this.http.put(serviceUrl, body, ropts);
   }
 }

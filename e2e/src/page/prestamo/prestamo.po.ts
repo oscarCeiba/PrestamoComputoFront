@@ -40,6 +40,5 @@ export class PrestamoPage {
 
     async clickBotonActualizar(){
          await this.buttonActualizar.click();
-    } 
-
+    }
 }

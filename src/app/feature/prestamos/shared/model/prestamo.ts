@@ -7,7 +7,7 @@ export class Prestamo {
     estado: number;
 
     constructor(id: number, cedula: number, equipoComputo: string, fechaCreacion: string,
-        fechaEntrega: string, estado: number) {
+                fechaEntrega: string, estado: number) {
         this.id = id;
         this.cedula = cedula;
         this.equipoComputo = equipoComputo;
