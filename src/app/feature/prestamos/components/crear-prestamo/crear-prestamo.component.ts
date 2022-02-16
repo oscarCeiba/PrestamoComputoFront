@@ -53,7 +53,7 @@ export class CrearPrestamoComponent implements OnInit {
   }
 
   private cargarFecha() {
-    const fechaActual = new Date;
+    const fechaActual = new Date();
     const anualidad = fechaActual.getFullYear();
     const mes = ((fechaActual.getMonth() + UNO) > NUEVE ? (fechaActual.getMonth() + UNO) : `0${(fechaActual.getMonth() + UNO)}`);
     const dia = (fechaActual.getDate() > NUEVE ? fechaActual.getDate() : `0${fechaActual.getDate()}`);

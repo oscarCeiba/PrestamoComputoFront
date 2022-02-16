@@ -18,7 +18,6 @@ describe('CrearPrestamoComponent', () => {
   let component: CrearPrestamoComponent;
   let fixture: ComponentFixture<CrearPrestamoComponent>;
   let prestamoService: PrestamoService;
-  let respuesta: { valor: 'prueba' };
   let notifierService: NotifierService;
 
   beforeEach(async () => {
@@ -69,6 +68,7 @@ describe('CrearPrestamoComponent', () => {
   });
 
   it('Registrando prestamo con valores completos y error servicio', () => {
+    const respuesta = { valor: 'prueba' };
     component.prestamoForm.controls.cedula.setValue('1023009035');
     component.prestamoForm.controls.equipoComputo.setValue('Asus1');
 
@@ -83,6 +83,7 @@ describe('CrearPrestamoComponent', () => {
   });
 
   it('Registrando prestamo con valores completos', () => {
+    const respuesta = { valor: 'prueba' };
     component.prestamoForm.controls.cedula.setValue('1023009035');
     component.prestamoForm.controls.equipoComputo.setValue('Asus1');
     spyOn(prestamoService, 'guardar').and.returnValue(

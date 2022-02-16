@@ -100,7 +100,7 @@ export class EntregarPrestamoComponent implements OnInit {
 
   validarFechaMensajeSuspension(fecha) {
     const fechaEntrega = new Date(fecha);
-    const fechaActual = new Date;
+    const fechaActual = new Date();
     if (this.botonActualizar) {
       if (fechaEntrega < fechaActual) {
         this.mensaje = MENSAJE_SUSPENSION;

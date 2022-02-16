@@ -12,8 +12,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private router: Router) { }
 
-  intercept(req: HttpRequest<Object>, next: HttpHandler):
-    Observable<HttpEvent<Object>> {
+  intercept(req: HttpRequest<object>, next: HttpHandler):
+    Observable<HttpEvent<object>> {
 
     return next.handle(req).pipe(
       catchError(error => {
