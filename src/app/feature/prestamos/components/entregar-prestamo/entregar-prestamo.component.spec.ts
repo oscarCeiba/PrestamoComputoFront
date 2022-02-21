@@ -77,13 +77,11 @@ describe('EntregarPrestamoComponent', () => {
   it('formulario valido cuando esta vacio haciendo click al boton consultar error servicio', () => {
     const respuesta: [Prestamo] = [new Prestamo(1, 1023009035, 'Dell', '2021-11-01', '2021-11-15', 1)];
     component.prestamoFormConsulta.controls.cedulaConsulta.setValue('1023009044');
-
-
-    component.consultar();
-
     spyOn(prestamoService, 'consultar').and.returnValue(
       of(respuesta)
     );
+
+    component.consultar();
 
     expect(component.prestamoFormConsulta.valid).toBeTrue();
   });
@@ -100,7 +98,7 @@ describe('EntregarPrestamoComponent', () => {
     component.botonActualizar = false;
 
     component.validarEstadoSolicitud(2);
-
+    
     expect(component.botonActualizar).toBeFalse();
   });
 
@@ -143,6 +141,7 @@ describe('EntregarPrestamoComponent', () => {
     spyOn(prestamoService, 'actualizar').and.returnValue(
       of(respuesta)
     );
+
 
     component.consumoActualizacion();
 

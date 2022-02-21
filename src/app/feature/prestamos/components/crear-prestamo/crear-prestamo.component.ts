@@ -44,10 +44,11 @@ export class CrearPrestamoComponent implements OnInit {
   }
 
   private construirFormularioPrestamos() {
+    const vacio = '';
     this.prestamoForm = new FormGroup({
-      cedula: new FormControl('', [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_CEDULA),
+      cedula: new FormControl(vacio, [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_CEDULA),
       Validators.maxLength(LONGITUD_MINIMA_PERMITIDA_CEDULA)]),
-      equipoComputo: new FormControl('', [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
+      equipoComputo: new FormControl(vacio, [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
       Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)])
     });
   }
